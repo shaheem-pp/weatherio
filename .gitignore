@@ -1,4 +1,4 @@
-weatherio/secr
+weatherio/secrets.py
 ets.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
