@@ -2,7 +2,6 @@ import json
 import urllib.request
 from django.shortcuts import redirect, render
 
-
 # Create your views here.
 import weatherio.secrets
 
@@ -16,7 +15,7 @@ def index(request):
             '&appid=' + weatherio.secrets.API_KEY + '&units=metric').read()
         list_of_data = json.loads(source)
         data = {
-            'city': city,
+            'city': str(list_of_data['name']),
             "country_code": str(list_of_data['sys']['country']),
             "coordinate": str(list_of_data['coord']['lon']) + ', '
                           + str(list_of_data['coord']['lat']),
@@ -24,7 +23,8 @@ def index(request):
             "pressure": str(list_of_data['main']['pressure']),
             "humidity": str(list_of_data['main']['humidity']),
             "logo": int(list_of_data['weather'][0]['id']),
-            "searched": searched
+            "searched": searched,
+            "weather": str(list_of_data['weather'][0]['description']),
         }
     else:
         data = {"searched": 0}

@@ -41,40 +41,42 @@
         <div class="row">
             <div class="col-md-3">
                 {% if logo >= 200 and logo <= 232 %}
-                    <img src="{% static 'images/thunderstorm.png' %}" alt="">
+                    <img src="{% static 'images/thunderstorm-clouds.png' %}" alt="">
                 {% elif logo >= 300 and logo <= 321 %}
-                    <img src="{% static 'images/rain.png' %}" alt="">
+                    <img src="{% static 'images/drizzle.png' %}" alt="">
                 {% elif logo >= 500 and logo <= 531 %}
-                    <img src="{% static 'images/rain.png' %}" alt="">
+                    <img src="{% static 'images/rainy.png' %}" alt="">
                 {% elif logo >= 600 and logo <= 622 %}
-                    <img src="{% static 'images/snow.png' %}" alt="">
+                    <img src="{% static 'images/snowflake.png' %}" alt="">
                 {% elif logo == 702 %}
                     <img src="{% static 'images/mist.png' %}" alt="">
                 {% elif logo >= 801 and logo <= 804 %}
-                    <img src="{% static 'images/fewclouds.png' %}" alt="">
+                    <img src="{% static 'images/cloud-computing.png' %}" alt="">
                 {% elif logo == 800 %}
-                    <img src="{% static 'images/clear.png' %}" alt="">
+                    <img src="{% static 'images/clear-sky.png' %}" alt="">
                 {% endif %}
             </div>
             <div class="col-md-9">
                 <h1 class="display-3 d-inline">{{ temp }}&deg;</h1>
                 <h1 class="d-inline">C</h1>
+                <h5>It's {{ weather }} at, </h5>
                 <h1>{{ city }}, {{ country_code }}</h1>
             </div>
         </div>
 
+        <br><br>
 
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <p>Coordinates: {{ coordinate }}</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>Humidity: {{ humidity }}%</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p>Pressure: {{ pressure }}atm</p>
-            </div>
-        </div>
+{#        <div class="row">#}
+{#            <div class="col-md-4 text-center">#}
+{#                <p>Coordinates: {{ coordinate }}</p>#}
+{#            </div>#}
+{#            <div class="col-md-4 text-center">#}
+{#                <p>Humidity: {{ humidity }}%</p>#}
+{#            </div>#}
+{#            <div class="col-md-4 text-center">#}
+{#                <p>Pressure: {{ pressure }}atm</p>#}
+{#            </div>#}
+{#        </div>#}
     {% endif %}
 
 </div>
