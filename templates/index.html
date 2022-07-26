@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet">
+    <title>Weatherio</title>
+</head>
+
+<body>
+<div class="inner-div">
+    <h1 class="text-center display-1">Weatherio</h1>
+    <br><br>
+
+    <form action="/search/" method="post" class="d-flex" role="search">
+        {% csrf_token %}
+        <label for="city"></label>
+        <input class="form-control me-2 form-select-lg" list="city" name="city" type="search" placeholder="Search"
+               aria-label="Search"
+               required>
+        <datalist id="city">
+            <option value="Toronto">
+            <option value="Kozhikode">
+            <option value="Kakkanad">
+            <option value="London">
+            <option value="Cupertino">
+        </datalist>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <br><br>
+
+    {% if searched == 1 %}
+        <div class="row">
+            <div class="col-md-3">
+                {% if logo >= 200 and logo <= 232 %}
+                    <img src="{% static 'images/thunderstorm.png' %}" alt="">
+                {% elif logo >= 300 and logo <= 321 %}
+                    <img src="{% static 'images/rain.png' %}" alt="">
+                {% elif logo >= 500 and logo <= 531 %}
+                    <img src="{% static 'images/rain.png' %}" alt="">
+                {% elif logo >= 600 and logo <= 622 %}
+                    <img src="{% static 'images/snow.png' %}" alt="">
+                {% elif logo == 702 %}
+                    <img src="{% static 'images/mist.png' %}" alt="">
+                {% elif logo >= 801 and logo <= 804 %}
+                    <img src="{% static 'images/fewclouds.png' %}" alt="">
+                {% elif logo == 800 %}
+                    <img src="{% static 'images/clear.png' %}" alt="">
+                {% endif %}
+            </div>
+            <div class="col-md-9">
+                <h1 class="display-3 d-inline">{{ temp }}&deg;</h1>
+                <h1 class="d-inline">C</h1>
+                <h1>{{ city }}, {{ country_code }}</h1>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p>Coordinates: {{ coordinate }}</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>Humidity: {{ humidity }}%</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p>Pressure: {{ pressure }}atm</p>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

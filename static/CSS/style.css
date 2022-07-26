@@ -1,0 +1,11 @@
+.inner-div {
+	padding: 10rem;
+}
+
+img{
+	width: 75%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
